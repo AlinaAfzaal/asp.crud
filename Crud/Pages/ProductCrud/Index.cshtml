@@ -1,0 +1,62 @@
+﻿@page
+@model Crud.Pages.ProductCrud.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Products</h1>
+<br /><br />
+<p>
+    <a asp-page="Create" class="btn btn-primary">Create <i class="fas fa-add"></i></a>
+</p>
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Product[0].Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Product[0].Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Product[0].Description)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Product[0].Category)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Product)
+            {
+
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem =>item.Category)                                               @*@Model.CategoryName(item.Id).Result*@         @*Result  can cause a deadlock, check this for more information: Don't Block on Async Code*@
+                    </td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.Id" class="btn btn-success"><i class="fas fa-edit"></i></a> 
+                        <a asp-page="./Delete" asp-route-id="@item.Id" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                        <a asp-page="./Details" asp-route-id="@item.Id" class="btn btn-secondary"><i class="fas fa-circle-info"></i></a>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>

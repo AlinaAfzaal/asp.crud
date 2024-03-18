@@ -1,0 +1,27 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+*:focus{
+
+   outline: none !important;
+   box-shadow: none !important;
+}
+body {
+  margin-bottom: 60px;
+  /*background-color: lightgrey;*/
+}
+.form-group{
+    margin-bottom:14px; 
+    form-group
+}
