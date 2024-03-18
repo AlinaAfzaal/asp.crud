@@ -1,0 +1,36 @@
+﻿@page
+@model Crud.Pages.CategoryCrud.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h3>Details</h3>
+
+<div>
+    <br />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Category.Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Category.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Category.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Category.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Category.Group)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Category.Group)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Category?.Id" class="btn btn-success">Edit</a>
+    <a asp-page="./Index" class="btn btn-secondary">Cancel</a>
+</div>

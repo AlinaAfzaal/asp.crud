@@ -1,0 +1,90 @@
+﻿@page
+@model Crud.Pages.GroupCrud.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h3>Delete Group</h3>
+<br />
+<div class="">
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => Model.Group.Id)
+
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Group.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Group.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Group.Name)
+        </dd>
+    </dl>
+
+   @if (Model.listCategories!=null)
+    {
+        int i= 1; 
+        <h5>Group Records</h5>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Sr. 
+                    </th>
+                    <th>
+                        Category Id
+                    </th>
+                    <th>
+                        Category Name
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.listCategories)
+                {
+                    <tr>
+                        <td>
+                            @i
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelitem => item.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelitem => item.Name)
+                        </td>
+                    </tr>
+                    i= i + 1; 
+                }
+            </tbody>
+        </table>
+    }
+
+    <br /><br />
+    
+    <form method="post">
+        <input type="hidden" asp-for="Group.Id" />
+        @{
+
+           <div class="form-check">
+              <input asp-for="@Model.deleteCheck" class="form-check-input" type="checkbox" id="deleteCheck" name="deleteCheck">
+              <label class="form-check-label text-danger" for="deleteCheck">Delete all records</label>
+           </div>
+        }
+
+        <input type="submit" value="Delete" class="btn btn-danger" />
+        <a asp-page="./Index" class="btn btn-secondary">Cancel</a>
+    </form>
+</di>
+
+
+@section Scripts {
+    <script>
+        var focusCheckbox = @(TempData["FocusCheckbox"] ?? "false");
+        if (focusCheckbox) {
+            document.getElementById('deleteCheck').focus();
+        }
+    </script>
+}
